@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abou Yassine Transport – France & Tunisie</title>
+  <style>
+    :root {
+      --blue:#0b3c7c;
+      --red:#e02626;
+      --light:#f5f5f7;
+      --dark:#111827;
+      --accent:#fbbf24;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      line-height:1.5;
+    }
+    header {
+      background:linear-gradient(135deg,var(--blue),var(--red));
+      color:#fff;
+      padding:1.5rem 1rem 2rem;
+      text-align:center;
+    }
+    header h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    header p { opacity:0.95; }
+
+    .flag-row {
+      margin-top:0.75rem;
+      font-weight:600;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      font-size:0.8rem;
+    }
+
+    nav {
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    nav .nav-inner {
+      max-width:900px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0.5rem 1rem;
+      font-size:0.9rem;
+    }
+    nav a {
+      color:var(--dark);
+      text-decoration:none;
+      margin-left:1rem;
+      font-weight:500;
+    }
+    nav a:hover { color:var(--red); }
+
+    main { max-width:900px; margin:1.5rem auto 2.5rem; padding:0 1rem; }
+
+    section { margin-bottom:2rem; }
+
+    h2 {
+      font-size:1.4rem;
+      margin-bottom:0.75rem;
+      color:var(--blue);
+    }
+
+    .hero-card {
+      background:#fff;
+      border-radius:0.75rem;
+      border:1px solid #e5e7eb;
+      padding:1rem 1.25rem 1.25rem;
+      box-shadow:0 8px 20px rgba(15,23,42,0.06);
+    }
+    .hero-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .hero-main { flex:1 1 220px; }
+    .badge {
+      display:inline-flex;
+      align-items:center;
+      gap:0.4rem;
+      background:rgba(15,118,110,0.1);
+      color:#047857;
+      padding:0.25rem 0.6rem;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      margin-bottom:0.4rem;
+    }
+    .hero-title {
+      font-size:1.25rem;
+      font-weight:700;
+      margin-bottom:0.3rem;
+    }
+    .hero-sub { font-size:0.95rem; color:#4b5563; }
+
+    .hero-actions {
+      display:flex;
+      flex-direction:column;
+      gap:0.4rem;
+      margin-top:0.75rem;
+    }
+    .btn {
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:0.55rem 0.8rem;
+      border-radius:0.6rem;
+      border:1px solid transparent;
+      font-size:0.9rem;
+      font-weight:600;
+      text-decoration:none;
+      cursor:pointer;
+      transition:all 0.15s ease-out;
+    }
+    .btn-primary {
+      background:var(--red);
+      color:#fff;
+      box-shadow:0 8px 18px rgba(220,38,38,0.35);
+    }
+    .btn-primary:hover { background:#b91c1c; transform:translateY(-1px); }
+    .btn-outline {
+      background:#fff;
+      color:var(--blue);
+      border-color:#d1d5db;
+    }
+    .btn-outline:hover { border-color:var(--blue); color:var(--red); }
+
+    .tagline {
+      margin-top:0.8rem;
+      font-size:0.85rem;
+      color:#6b7280;
+    }
+
+    .grid {
+      display:grid;
+      gap:1rem;
+    }
+    @media(min-width:720px){
+      .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+
+    .card {
+      background:#fff;
+      border-radius:0.75rem;
+      border:1px solid #e5e7eb;
+      padding:1rem 1.1rem;
+      box-shadow:0 4px 10px rgba(15,23,42,0.04);
+    }
+    .card h3 {
+      font-size:1rem;
+      margin-bottom:0.4rem;
+      color:var(--dark);
+    }
+    .card p { font-size:0.9rem; color:#4b5563; }
+
+    .location-list { margin-top:0.6rem; }
+    .location-item {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:0.5rem;
+      padding:0.5rem 0;
+      border-bottom:1px dashed #e5e7eb;
+      font-size:0.9rem;
+    }
+    .location-item:last-child { border-bottom:none; }
+    .loc-name { font-weight:600; }
+    .loc-number { font-family:monospace; color:#111827; }
+
+    .loc-actions {
+      display:flex;
+      gap:0.35rem;
+    }
+    .loc-btn {
+      font-size:0.75rem;
+      padding:0.25rem 0.55rem;
+      border-radius:999px;
+      border:1px solid #d1d5db;
+      background:#fff;
+      text-decoration:none;
+      color:#374151;
+      white-space:nowrap;
+    }
+    .loc-btn:hover {
+      border-color:var(--blue);
+      color:var(--red);
+    }
+
+    footer {
+      border-top:1px solid #e5e7eb;
+      padding:1rem;
+      text-align:center;
+      font-size:0.8rem;
+      color:#6b7280;
+      background:#fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ABOU YASSINE TRANSPORT</h1>
+    <p>Transport &amp; groupage FRANCE ⇄ TUNISIE · Import &amp; Export</p>
+    <div class="flag-row">🇫🇷 France · 🇹🇳 Tunisie</div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <div><strong>AY Transport</strong></div>
+      <div>
+        <a href="#services">Services</a>
+        <a href="#locations">Agences / Contacts</a>
+        <a href="#contact">Devis &amp; Infos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section>
+      <div class="hero-card">
+        <div class="hero-row">
+          <div class="hero-main">
+            <div class="badge">Ramassage France &amp; Tunisie</div>
+            <div class="hero-title">Envois de colis, palettes &amp; déménagements</div>
+            <p class="hero-sub">
+              Ramassage dans plusieurs villes en France et en Tunisie, départs réguliers vers la Tunisie.
+            </p>
+            <div class="hero-actions">
+              <!-- main French WhatsApp number -->
+              <a class="btn btn-primary" href="https://wa.me/33748374678" target="_blank" rel="noopener">
+                Contacter sur WhatsApp (France)
+              </a>
+              <!-- public French mobile from flyers -->
+              <a class="btn btn-outline" href="tel:+33749384678">
+                Appeler France : +33&nbsp;7&nbsp;49&nbsp;38&nbsp;46&nbsp;78
+              </a>
+            </div>
+            <p class="tagline">
+              Prix compétitifs · Service sérieux · Possibilité de groupage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <h2>Nos services</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Transport France ⇄ Tunisie</h3>
+          <p>
+            Envoi de colis, cartons, meubles, appareils électroménagers et autres effets personnels
+            entre la France et la Tunisie.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Ramassage en ville</h3>
+          <p>
+            Points de dépôt et numéros de contact dans plusieurs villes : Tunis, Sfax, Mahres,
+            El Amra, Sousse, Béjà/Beliana etc.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations">
+      <h2>Agences &amp; numéros de contact</h2>
+
+      <div class="card">
+        <h3>Contact France</h3>
+        <div class="location-list">
+          <div class="location-item">
+            <div>
+              <div class="loc-name">France (WhatsApp)</div>
+              <div class="loc-number">07&nbsp;48&nbsp;37&nbsp;46&nbsp;78</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="https://wa.me/33748374678" target="_blank" rel="noopener">
+                WhatsApp
+              </a>
+              <a class="loc-btn" href="tel:+33748374678">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">France (mobile)</div>
+              <div class="loc-number">+33&nbsp;7&nbsp;49&nbsp;38&nbsp;46&nbsp;78</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+33749384678">Appeler</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="card">
+        <h3>Contacts Tunisie</h3>
+        <div class="location-list">
+          <div class="location-item">
+            <div>
+              <div class="loc-name">Tunis</div>
+              <div class="loc-number">24&nbsp;50&nbsp;04&nbsp;04</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21624500404">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">Sfax</div>
+              <div class="loc-number">24&nbsp;31&nbsp;74&nbsp;20</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21624317420">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">Mahres</div>
+              <div class="loc-number">51&nbsp;55&nbsp;60&nbsp;91</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21651556091">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">El Amra</div>
+              <div class="loc-number">94&nbsp;14&nbsp;12&nbsp;06</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21694141206">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">Sousse</div>
+              <div class="loc-number">98&nbsp;98&nbsp;56&nbsp;07</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21698985607">Appeler</a>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <div>
+              <div class="loc-name">Beliana</div>
+              <div class="loc-number">27&nbsp;36&nbsp;32&nbsp;83</div>
+            </div>
+            <div class="loc-actions">
+              <a class="loc-btn" href="tel:+21627363283">Appeler</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / QUOTE -->
+    <section id="contact">
+      <h2>Demande d’informations &amp; devis</h2>
+      <div class="card">
+        <p style="font-size:0.95rem; margin-bottom:0.75rem;">
+          Pour un devis rapide, envoyez un message sur WhatsApp avec la ville de départ,
+          la ville d’arrivée, une description de vos colis (poids / volume) et des photos
+          si possible.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/33748374678" target="_blank" rel="noopener">
+            Ouvrir WhatsApp France
+          </a>
+          <a class="btn btn-outline" href="mailto:contact@abouyassine-transport.com">
+            Envoyer un e‑mail
+          </a>
+        </div>
+        <p class="tagline">
+          Horaires et lieux de ramassage communiqués régulièrement par téléphone et WhatsApp.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Abou Yassine Transport · France – Tunisie
+  </footer>
+
+  <script>
+    // dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
